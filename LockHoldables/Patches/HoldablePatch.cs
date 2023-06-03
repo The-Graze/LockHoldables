@@ -17,20 +17,17 @@ namespace Lock__instances.Patches
         {
             if ( !__instance.InLeftHand() && Plugin.Instance.lockright)
             {
-                __instance.gripInteractor.myCollider.enabled = false;
-                __instance.gripInteractor.enabled = false;
+                __instance.gripInteractor.gameObject.SetActive(false);
                 return false;
             }
             if (__instance.InLeftHand() && Plugin.Instance.lockleft)
             {
-                __instance.gripInteractor.myCollider.enabled = false;
-                __instance.gripInteractor.enabled = false;
+                __instance.gripInteractor.gameObject.SetActive(false);
                 return false;
             }
             else
             {
-                __instance.gripInteractor.myCollider.enabled = true;
-                __instance.gripInteractor.enabled = true;
+                __instance.gripInteractor.gameObject.SetActive(true);
                 return true;
             }
         }
