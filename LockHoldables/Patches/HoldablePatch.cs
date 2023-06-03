@@ -8,9 +8,6 @@ using static TransferrableObject;
 
 namespace Lock__instances.Patches
 {
-    /// <summary>
-    /// This is an example patch, made to demonstrate how to use Harmony. You should remove it if it is not used.
-    /// </summary>
     [HarmonyPatch(typeof(TransferrableObject))]
     [HarmonyPatch("OnRelease")]
     [HarmonyPatch(new Type[] { typeof(DropZone), typeof(GameObject)})]
@@ -20,13 +17,22 @@ namespace Lock__instances.Patches
         {
             if ( !__instance.InLeftHand() && Plugin.Instance.lockright)
             {
+                __instance.gripInteractor.myCollider.enabled = false;
+                __instance.gripInteractor.enabled = false;
                 return false;
             }
             if (__instance.InLeftHand() && Plugin.Instance.lockleft)
             {
+                __instance.gripInteractor.myCollider.enabled = false;
+                __instance.gripInteractor.enabled = false;
                 return false;
             }
-            else return true;
+            else
+            {
+                __instance.gripInteractor.myCollider.enabled = true;
+                __instance.gripInteractor.enabled = true;
+                return true;
+            }
         }
     }
 }

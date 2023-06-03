@@ -4,7 +4,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.XR;
 using Utilla;
-
+using GorillaNetworking;
 namespace LockHoldables
 {
     [BepInPlugin(PluginInfo.GUID, PluginInfo.Name, PluginInfo.Version)]
@@ -24,6 +24,7 @@ namespace LockHoldables
         {
             HarmonyPatches.ApplyHarmonyPatches();
             Instance = this;
+         
         }
 
         void Update()
